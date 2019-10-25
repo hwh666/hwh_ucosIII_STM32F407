@@ -58,7 +58,7 @@ static void LED_Task(void)
 /*----------------------contents of the task---------------------------------*/
 	//task here
         LED0_TOGGLE
-        OSTimeDlyHMSM ( 0, 0, 0, 50, OS_OPT_TIME_DLY, & err );  //每500ms扫描一次
+        OSTimeDlyHMSM ( 0, 0, 0, 500, OS_OPT_TIME_DLY, & err );  //每500ms扫描一次
         
         
         

@@ -124,17 +124,14 @@ static void Key_Pend_Task(void)
 //                         (OS_ERR   *)&err);                 //返回错
         /* 阻塞任务，等待任务消息 */
 		pMsg = OSTaskQPend (  (OS_TICK        )0,                    //无期限等待
-                              (OS_OPT         )OS_OPT_PEND_NON_BLOCKING, //不阻塞任务，防止优先级翻转
+                              (OS_OPT         )OS_OPT_PEND_BLOCKING, //阻塞任务 注意：防止优先级翻转
                               (OS_MSG_SIZE   *)&msg_size,            //返回消息长度
                               (CPU_TS        *)&ts,                  //返回消息被发送的时间戳
                               (OS_ERR        *)&err);                //返回错误类型
-        if(err==OS_ERR_NONE)
-        {
-            if(strcmp(pMsg,"Left")==0)
-                LED0_TOGGLE
-            else if(strcmp(pMsg,"Right")==0)
-                LED1_TOGGLE
-        }
+        if(strcmp(pMsg,"Left")==0)
+            LED0_TOGGLE
+        else if(strcmp(pMsg,"Right")==0)
+            LED1_TOGGLE
         
     }
 }
